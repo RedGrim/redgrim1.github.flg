@@ -4,57 +4,7 @@ A concise, generic README template for website development projects.
 ## Table of Contents
 - Overview
 - Features
-- Tech stack
-- Development & build
-- Deployment
-- Testing & quality
-- Contributing
-- License
-- Contact
 
-
-## Features
-- Responsive layout
-- Accessible semantic HTML
-- Client-side routing (if applicable)
-- API integration
-- Performance optimizations (lazy-loading, code splitting)
-- Frontend: HTML, CSS (or framework), JavaScript (or framework/library)
-- Build tools: Node.js, package manager (npm/yarn), bundler (Vite/Webpack/Parcel)
-- Node.js >= 16
-- npm or yarn
-- (Optional) Git, Docker
-
-## Quick start
-1. Clone the repo
-    ```bash
-    git clone <repo-url>
-    cd <project-name>
-    npm install
-    # or
-    yarn
-    ```
-3. Run dev server
-    ```bash
-    npm run dev
-    # or
-    ```bash
-    npm run build
-
-## Project structure (example)
-```
-Google Form setup
-- The registration form is now embedded on `registration.html` using the provided Google Forms iframe. Navigation now points to the internal `registration.html` so users stay on the site.
-- If you prefer linking directly to the Google form URL instead of embedding, update the nav links in the pages above.
-/src
-  /components
-  /pages
-  /styles
-  /assets
-public/
-tests/
-package.json
-README.md
 ```
 # Charity Golf Tournament — Website Skeleton
 
@@ -75,18 +25,12 @@ This workspace contains a simple static website skeleton for a charity golf tour
 - Location: Jeffersonville Golf Club — 2400 W. Main Street, Norristown, PA 19403
 - Pricing: $200 per player; Hole Sponsors: $100 each or 2 for $150
 - Features: Awards, Raffles, Door Prizes — Buffet + Open Bar immediately following in the banquet hall
-
- Note: `obit.jpg` was removed and replaced with the placeholder image `assets/images/placeholder.jpg` in `about.html`. If you add a new portrait image, place it in `assets/images/` and update `about.html` accordingly.
 - `registration.html` — Client-side registration form for a foursome (stores entries in `localStorage` and allows export to JSON).
 - `registration.html` — Redirects / links to a Google Form for registration. Replace the placeholder `https://forms.gle/YOUR_GOOGLE_FORM` in the files below with your real Google Form URL.
 - `donate.html` — Donation page with a Venmo link placeholder.
 
 New images added
 - `LallyGolfPoster25.jpg` — added to `pictures.html` gallery and displayed on `index.html` as the event poster (moved to `assets/images/LallyGolfPoster25.jpg`).
-
-Note: `obit.jpg` was removed and replaced with the placeholder image `assets/images/placeholder.jpg` in `about.html`. If you add a new portrait image, place it in `assets/images/` and update `about.html` accordingly.
-
-If you want me to extract text from either image (OCR) and use the extracted text to populate the About story, the Winners captions, or alt text, I can attempt OCR — tell me you want that and I'll run an OCR pass (I may need to install Python OCR packages or use an external service). Alternately, you can tell me the text to include and I will update the pages directly.
 
 Assets:
 - `assets/css/style.css` — Base styles.
@@ -160,15 +104,91 @@ npm run format
 ## Contributing
 - Fork the repo, create a feature branch, submit PRs with descriptions and tests.
 - Follow code style and commit message conventions.
-- Add changelog entries for notable changes.
+# Frank Lally Golf Classic — Website (Static)
 
-## License
-Specify a license (e.g., MIT). Add LICENSE file.
+This repository contains a small static website used to present event details, gallery images, registration (Google Form), sponsorship info and payment instructions for the Frank Lally Golf Classic.
 
-## Contact
-Project maintainer: Your Name — contact@example.com
+Essential files
+- `index.html` — Home / hero and event summary.
+- `about.html` — About & gallery (uses `assets/images/AU_*.jpg`).
+- `pictures.html` — Photo gallery.
+- `winners.html` — Past winners.
+- `sponsors.html` — Sponsorship info and printable sponsorship form.
+- `registration.html` — Embedded Google Form for registration (iframe).
+- `donate.html` — Payments page (Venmo link and QR code).
+- `assets/` — CSS, JavaScript and `images/` used by the site.
 
-Notes:
-- Replace placeholders with project-specific details.
-- Keep secrets out of the repository (use environment variables or secret stores).
-- Regularly run accessibility and performance checks.
+Quick purpose
+- Static site for previewing event pages, gallery, and payment instructions. This is intended for local review and small-scale distribution (not a production deployment).
+
+How to get the project (GitHub link / package)
+1. From GitHub (preferred): obtain the repository URL from the project owner or maintainer (it looks like `https://github.com/<owner>/<repo>.git`).
+   - To receive the URL: the owner can paste the link in email, chat, or create a GitHub repository invite. Ask the owner for the repository link.
+2. Download a ZIP from the GitHub web UI: open the repository page in a browser and click **Code → Download ZIP**.
+
+Clone (PowerShell) — recommended if you have Git installed
+1. Open PowerShell and run:
+
+```powershell
+# Clone the repository (replace <repo-url> with the URL you received)
+git clone <repo-url>
+
+# Change into the repo folder
+Set-Location -Path .\<repo-folder>
+```
+
+Download + extract ZIP (no Git)
+1. Download the ZIP from the repo page.
+2. Extract it with File Explorer or PowerShell:
+
+```powershell
+# Example: unzip to current folder
+Expand-Archive -Path .\FrankLallyRepo.zip -DestinationPath .\FrankLallySite
+Set-Location -Path .\FrankLallySite
+```
+
+Run the site locally for review (no server required for static files, but a simple local server is recommended)
+1. Using Python (common and cross-platform):
+
+```powershell
+# From the project root (folder containing index.html)
+# Start a simple static server on port 8000
+python -m http.server 8000
+
+# Open in browser:
+# http://localhost:8000
+```
+
+2. Alternative: If you have VS Code, open the folder and use the Live Server extension (right-click `index.html` → Open with Live Server).
+
+Optional: Python environment (only required for tools like the provided OCR script)
+1. Create and activate a venv (Windows PowerShell):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+2. Install optional packages (example used in this project for image conversion/OCR):
+
+```powershell
+pip install pillow pytesseract
+```
+
+Notes about OCR and Tesseract
+- The repository includes a small OCR helper (`tools/ocr_extract.py`) that requires the Tesseract binary on the system. Installing `pytesseract` alone is not enough — install the Tesseract executable (Windows installer) and add it to your PATH to use OCR.
+
+Quick verification checklist for reviewers
+- Confirm `index.html` loads and displays the hero and poster.
+- Visit `about.html` to view the AU_ gallery thumbnails.
+- Open `registration.html` to check the embedded Google Form (or open it in a new tab via the provided link).
+- Open `donate.html` (Payments) to verify Venmo link and QR code.
+
+What I changed (if you are reviewing edits)
+- This README has been simplified to the essential information needed to get the project locally and preview it. All generic template / scaffold notes were removed.
+
+Contact / Maintainer
+- For the official repository link, access rights, or to request additional changes, contact the site maintainer (use the same channel you received this repository link from).
+
+License
+- Add a LICENSE file if you want to publish under a specific license (e.g., MIT). If none is present, treat this repo as private/internal until a license is chosen.
