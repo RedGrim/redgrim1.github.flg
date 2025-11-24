@@ -107,12 +107,6 @@ Security and privacy notes
 --------------------------
 - This project contains no server-side code and does not store form responses locally — the registration form is served by Google Forms (you will need internet access for that part).
 
-If you want me to prepare a one-click PowerShell `start-server.ps1` file that opens the browser and runs the server, or to include a packaged ZIP with a local Venmo QR image instead of an external QR service, tell me and I will add those files.
-
-Contact / help
---------------
-- If anything fails or you want me to prepare a ready-to-run ZIP with a `start-server.ps1` and embedded local QR image, tell me here and I will add it.
-
 ---
 
 _End of guide._
