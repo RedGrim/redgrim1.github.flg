@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frank Lally Golf Classic — Website (Static)
 
 A short, non-technical guide to what this site contains and how to run it locally for review.
@@ -110,3 +111,7 @@ Security and privacy notes
 ---
 
 _End of guide._
+=======
+# redgrim1.github.flg
+hosting site for flg
+>>>>>>> 01dd57737f8f7ed0f0822ab7d80b8cfeb94eaf58
