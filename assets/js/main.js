@@ -1,5 +1,24 @@
-// Main site JS: registration storage/export and small nav helper
+// Main site JS: registration storage/export, nav helper, and hide-on-scroll header
 document.addEventListener('DOMContentLoaded', function () {
+  // Hide/show header on scroll
+  const header = document.querySelector('header');
+  let lastScrollTop = 0;
+
+  window.addEventListener('scroll', function () {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+      // Scrolling down and past threshold
+      header.style.transform = 'translateY(-100%)';
+      header.style.transition = 'transform 0.3s ease-in-out';
+    } else {
+      // Scrolling up or near top
+      header.style.transform = 'translateY(0)';
+      header.style.transition = 'transform 0.3s ease-in-out';
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
+
   // Highlight current nav link
   const navLinks = document.querySelectorAll('nav a');
   navLinks.forEach(a => {
